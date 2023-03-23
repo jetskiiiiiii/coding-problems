@@ -1,4 +1,5 @@
 """
+https://leetcode.com/problems/running-sum-of-1d-array/
 pseudocode:
 
 1. create sum variable, initialize to 0
@@ -7,6 +8,7 @@ pseudocode:
 """
 
 nums = [1,2,3,4]
+
 def runningSums(nums):
     runningSum = []
     sum = 0 # keep track of previous sums
@@ -22,5 +24,11 @@ def shortRunningSums(nums):
     # sum = 0
     # return [[i for i in x] + x for x in range(len(nums))]
     return [()]
+
+# leetcode solution
+def leetRunningSums(nums):
+    for i in range(1, len(nums)):
+        nums[i] += nums[i-1]
+    return nums
     
-print(shortRunningSums(nums)) # expected output [1, 3, 6, 10]
+print(leetRunningSums(nums)) # expected output [1, 3, 6, 10]
