@@ -1,3 +1,7 @@
-list = [0, 0]
+list = []
+new = [1, 2, 3]
+while new:
+    list.insert(0, new[-1])
+    new.pop()
 
-list[-1].
+print(list)

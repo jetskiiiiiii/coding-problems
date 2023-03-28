@@ -4,12 +4,14 @@ https://leetcode.com/problems/merge-two-sorted-lists/?envType=study-plan&id=leve
 pseudocode:
 
 mergeTwoLists:
-- for every element in list2, compare it with the elements in list1
-- also keep track of previous node
-- if list2 < list1, put list2 element right before the list1 element
-- this new node should have a pointer to the list1 element which was found to be bigger than it
-- the node behind it should have a pointer to the newly made node
-- for the next iteration, start at the list1 element instead of the beginning
+- use a list to store merged nodes
+- set the first node to a default node
+- iterate through both lists until end
+- for one list to iterate, the current value of that list must be smaller than the current value of the other list
+- the current value that meets that requirement gets inserted in the list
+- before appending the new node, the previous node's next value should be redirected to point to the new node, so that all items in the list connect
+- at the end, one of the lists will be left with 1 value
+- find the list with one value and append it to the list
 """
 
 from typing import Optional
@@ -27,36 +29,6 @@ list2 = ListNode(1, ListNode(3, ListNode(4)))  # [1,1,2,3,4,4]
 # list1, list2 = ListNode(), ListNode()  # []
 
 # list1, list2 = ListNode(), ListNode(0)  # [0]
-
-
-# def mergeTwoLists(
-#     list1: Optional[ListNode], list2: Optional[ListNode]
-# ) -> Optional[ListNode]:
-#     new_nodes = [ListNode()]
-
-#     while list1 != None and list2 != None:
-#         if list2.val > list1.val:
-#             new_nodes[-1].next = list1
-#             new_nodes.append(ListNode(list1.val, None))
-#             list1 = list1.next
-#         elif list2.val <= list1.val:
-#             new_nodes[-1].next = list2
-#             new_nodes.append(ListNode(list2.val, None))
-#             list2 = list2.next
-
-#     # if list1 == None:
-#     #     while list2 != None:
-#     #         new_nodes[-1].next = list2
-#     #         new_nodes.append(ListNode(list2.val, None))
-#     #         list2 = list2.next
-#     # elif list2 == None:
-#     #     while list1 != None:
-#     #         new_nodes[-1].next = list1
-#     #         new_nodes.append(ListNode(list1.val, None))
-#     #         list1 = list1.next
-
-# return new_nodes[1]j
-# # return [i.val for i in new_nodes]
 
 
 def mergeTwoLists(
