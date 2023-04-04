@@ -1,10 +1,10 @@
-s = "abababab"
-b = "a"
-for i in range(1, len(b), 2):
-    if b[i - 1] == b[i]:
-        print(True)
-    else:
-        print(False)
+s = "aabbbcccd"  # 7
+count = {}
+for i in set(s):
+    count[i] = s.count(i)
 
-for i in range(2):
-    print(b[i])
+odd = [j - 1 for j in count.values() if j % 2 == 1] + [0]
+even = [j for j in count.values() if j % 2 == 0]
+
+print(odd, even)
+print(1 % 2)
