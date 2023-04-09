@@ -6,6 +6,10 @@ preorder:
 - if root is not None, append its value to results list
 - if root is None, children attribute doesn't exists for NoneType, so recursion for children only happens inside of root if statement
 - if the root is not None, and it has children, then for every child, set the child as root and perform the preorder() function on it
+
+fastPreorder:
+- append root to results
+- if    
 """
 
 from typing import List
@@ -31,12 +35,12 @@ def preorder(root: "Node") -> List[int]:
 
 def fastPreorder(root: "Node") -> List[int]:
     results = []
-    stack = []
+    stack = [root]
     while root:
-        root.append(root.val)
-        if root.children:
-            root = root.children
-            # HOW TO CLIMB UP
+        root.append(stack.pop())
+        while root.children:
+            pass
+
     pass
 
 
