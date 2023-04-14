@@ -3,11 +3,14 @@ https://leetcode.com/problems/maximum-subarray/?envType=study-plan&id=data-struc
 
 maxSubArray:
 - basic premise: elements are compared to the sum of the subarray up to (including) that element
-1. check if subarray is length 1 or 0, in which case return values are itself or 0, respectively
+1. check if subarray is length 0, in which case return 0
 2. create variables
-    - store current sum (sum of the current subarray up to the element being iterated)
-    - store maximum sum found from all subarrays program has looked at
-    - keep track of sums 
+    - one to track maximum sum found so far
+    - one to track sum of current subarray up to the element being indexed
+3. iterate through the list
+4. if element is bigger than the current sum (including the element), restart the count (create a new subarray)
+5. else, just update current sum to include current element
+6. check if the current sum is bigger than the current sum
 """
 
 from typing import List
@@ -20,7 +23,7 @@ nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]  # 6
 # nums = []  # 0
 # nums = [-1]
 # nums = [-1, -2]
-nums = [-2, -1]
+# nums = [-2, -1]
 
 
 def maxSubArray(nums: List[int]) -> int:
@@ -94,34 +97,31 @@ def maxSubArray(nums: List[int]) -> int:
     return max(max_subarray_sum)
 
 
-def fastmaxSubArray(nums: List[int]) -> int:
-    if len(nums) == 1:
-        return nums[0]
-    elif len(nums) == 0:
+def maxSubArray(nums: List[int]) -> int:
+    # check if list is empty
+    if nums == []:
         return 0
 
-    curr_sum = max_sum = nums[0]
+    # if list not empty, set maximum sum and sum of current subarray as first element
+    else:
+        max_sum = curr_sum = nums[0]
+
+    # iterate through list (exclude first element)
     for i in range(1, len(nums)):
-        curr_sum += nums[i]
-        if curr_sum > curr_sum - nums[i]:
-            
-        if nums[i] >= curr_sum:
-            max_sum = curr_sum = nums[i]
-        elif curr_sum > max_sum:
-            max_sum = curr_sum
+        """if current element is bigger than current sum,
+        then the current element by itself is more valuable
+        (e.g. [1, 0, -2, 5]; in this list, when index is at 5, current sum is 4 (1 + 0 + -2 + 5 = 4)
+        so, 5 by itself is bigger than 4; the max sum is then 5 by itself)
+        if this condition is met, a "new" subarray is made (meaning restart the sum count)
+        """
+        if nums[i] >= curr_sum + nums[i]:
+            curr_sum = nums[i]
+        else:
+            curr_sum + +nums[i]
+        # always check if current sum is bigger than any previous max sums
+        max_sum = max(max_sum, curr_sum)
 
     return max_sum
 
 
-# def maxSubArray(nums: List[int]) -> int:
-#     max_sum = 0
-#     for i in range(0, len(nums)):
-#         if nums[i] >= max_sum + nums[i]:
-#             max_sum = nums[i]
-#         elif max_sum + nums[i] > max_sum:
-#             max_sum += nums[i]
-
-#     return max_sum
-
-
-print(fastmaxSubArray(nums))
+print(maxSubArray(nums))
