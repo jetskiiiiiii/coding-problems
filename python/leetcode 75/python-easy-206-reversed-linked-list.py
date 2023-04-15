@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/reverse-linked-list
+https://leetcode.com/problems/reverse-linked-list/?envType=study-plan&id=level-1
 
 pseudocode:
 - if head empty, return head
@@ -33,6 +33,15 @@ def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
         return nodes[0]
     else:
         return head
+
+
+def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+    new_node = None
+    while head:
+        new_node = ListNode(head.val, new_node)
+        head = head.next
+
+    return new_node
 
 
 print(reverseList(head))
