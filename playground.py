@@ -1,4 +1,2 @@
-a = 1
-b = 2
-a, b = b, a
-print(a, b)
+empty = {}
+print("a" in empty.keys())

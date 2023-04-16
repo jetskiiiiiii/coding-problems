@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/linked-list-cycle-ii
+https://leetcode.com/problems/linked-list-cycle-ii/?envType=study-plan&id=level-1
 
 pseudocode:
 
@@ -8,8 +8,10 @@ detectCycle:
 - for every iteration, check if curr.next is inside of list of pointers
 - output start node of cycle
 
-fastDetectCle:
-- 
+fastDetectCycle:
+- traverse linked list
+- if element already exists in set, return that element (start of the cycle)
+- if not, add it to the set
 """
 
 from typing import Optional
@@ -38,8 +40,14 @@ def detectCycle(head: Optional[ListNode]) -> Optional[ListNode]:
     return None
 
 
-def fastdetectCycle(head: Optional[ListNode]) -> Optional[ListNode]:
-    pass
+def fastDetectCycle(head: Optional[ListNode]) -> Optional[ListNode]:
+    references = set()
+    while head:
+        if head in references:
+            return head
+        references.add(head)
+        head = head.next
+    return None
 
 
-print(detectCycle(list))
+print(fastDetectCycle(list))
