@@ -1,2 +1,5 @@
-empty = {}
-print("a" in empty.keys())
+a = []
+if a:
+    print(1)
+else:
+    print(0)
