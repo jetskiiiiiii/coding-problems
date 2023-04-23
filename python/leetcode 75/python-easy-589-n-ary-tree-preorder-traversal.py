@@ -15,7 +15,8 @@ fastPreorder:
 from typing import List
 
 node = [1, [[3, [5, 6]], 2, 4]]
-node = [1, [2, [3, [6, [7, [11, [14]]]]], [4, [8, [12]]], [5, [[9, [13]], 10]]]]
+# node = [1, [2, [3, [6, [7, [11, [14]]]]], [4, [8, [12]]], [5, [[9, [13]], 10]]]]
+node = [1, [3, 2, 4]]
 
 
 class Node:
@@ -24,7 +25,7 @@ class Node:
         self.children = children
 
 
-def preorder(self, root, results=None):
+def recrusivePreorder(self, root, results=None):
     if results == None:
         results = []
     if root:
@@ -50,6 +51,24 @@ def fastPreorder(root: "Node") -> List[int]:
             stack.add(root)
             root = root.children[i]
             i += 1
+    return results
+
+
+# children are always lists; empty list means no children
+
+
+def fastPreorder(root: "Node") -> List[int]:
+    # ERROR: WHEN STACK POPS, PROGRAM FORGETS THE INDEX OF PREVIOUS LIST
+    # WHEN GOING UP THE TREE, PROGRAM FORGETS WHICH CHILDREN IT LEFT OFF AT
+    results, stack = [root.val], [root.children]
+    while stack:
+        for i in stack[-1]:
+            results.append(i.val)
+            if i.children != []:
+                stack.append(i.children)
+                break
+            if i == stack[-1][-1]:
+                stack.pop()
     return results
 
 

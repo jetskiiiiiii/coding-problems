@@ -1,5 +1,2 @@
-a = []
-if a:
-    print(1)
-else:
-    print(0)
+for i in range(2):
+    print(i)
