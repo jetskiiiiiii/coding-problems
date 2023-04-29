@@ -25,7 +25,7 @@ class Node:
         self.children = children
 
 
-def recrusivePreorder(self, root, results=None):
+def recrusivePreorder(root, results=None):
     if results == None:
         results = []
     if root:
@@ -55,12 +55,10 @@ def fastPreorder(root: "Node") -> List[int]:
 
 
 # children are always lists; empty list means no children
-
-
 def fastPreorder(root: "Node") -> List[int]:
     # ERROR: WHEN STACK POPS, PROGRAM FORGETS THE INDEX OF PREVIOUS LIST
     # WHEN GOING UP THE TREE, PROGRAM FORGETS WHICH CHILDREN IT LEFT OFF AT
-    results, stack = [root.val], [root.children]
+    results, stack, indices = [root.val], [root.children], [0]
     while stack:
         for i in stack[-1]:
             results.append(i.val)

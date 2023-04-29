@@ -13,11 +13,11 @@ fastTwoSum:
 - don't look in previously indexed elements, but make sure to properly account for those positions when matches are found
 """
 
-# nums, target = [2, 7, 11, 15], 9  # [0, 1]
+nums, target = [2, 7, 11, 15], 9  # [0, 1]
 # nums, target = [3, 2, 4], 6  # [1, 2]
 # nums, target = [3, 3], 6  # [0, 1]
 # nums, target = [0, 4, 3, 0], 0  # [0, 3]
-nums, target = [1, 6142, 8192, 10239], 18431  # [2, 3]
+# nums, target = [1, 6142, 8192, 10239], 18431  # [2, 3]
 
 
 def twoSum(nums, target):
