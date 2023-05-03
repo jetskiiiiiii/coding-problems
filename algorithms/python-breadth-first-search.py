@@ -4,6 +4,8 @@ BFS:
 - root node initially inside of queue
 - pop queue to get current element
 - for every element add any existing children to queue
+
+O(vertices + edges)
 """
 from typing import List
 
