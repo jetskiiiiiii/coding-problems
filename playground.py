@@ -1,6 +1,8 @@
-a, b = 1, 10
+a = "abc"
+b = "z"
+a = list(a)
+while a:
+    print(a.pop(0))
+    # a = a[1:]
 
-while a != b:
-    mid = a + b // 2
-    b = mid
-    print(a, mid, b)
+# print(b + a)
